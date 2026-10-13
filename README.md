@@ -9,6 +9,20 @@ Dataset: **LaDe-P** (Cainiao, Apache-2.0 licence), city of **Yantai**, 1,146,781
 
 The project is available in **English and French**: notebook, report and web platform.
 
+## Preview
+
+**Main result: optimisation shortens routes, and ML keeps the plan reliable (fewer late pickups than optimisation without ML).**
+
+![Mean KPIs per day for the three strategies](docs/img/kpi_before_after.png)
+
+**Why ML: the baseline formula underestimates travel times (strongly negative bias), while the ML models are unbiased.**
+
+![Model comparison on the test set](docs/img/model_comparison.png)
+
+**Travel time is not proportional to distance, which a "distance ÷ speed" formula cannot capture.**
+
+![Time between visits by distance](docs/img/time_vs_distance.png)
+
 ## Structure
 
 ```

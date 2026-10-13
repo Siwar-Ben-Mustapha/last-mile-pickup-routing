@@ -9,6 +9,22 @@ Dataset : **LaDe-P** (Cainiao, licence Apache-2.0), ville de **Yantai**, 1 146 7
 
 Le projet est disponible en **français et en anglais** : notebook, rapport et plateforme web.
 
+## Aperçu
+
+**Résultat principal : l'optimisation raccourcit les tournées, et le ML rend le plan fiable (moins de retards que l'optimisation sans ML).**
+
+![KPI moyens par journée pour les trois stratégies](docs/img/kpi_before_after.png)
+
+**Pourquoi le ML : la formule de référence sous-estime les temps de trajet (biais très négatif), alors que les modèles ML sont sans biais.**
+
+![Comparaison des modèles sur le jeu de test](docs/img/model_comparison.png)
+
+**Le temps n'est pas proportionnel à la distance, ce qu'une formule « distance ÷ vitesse » ne peut pas capter.**
+
+![Temps entre visites selon la distance](docs/img/time_vs_distance.png)
+
+*Les figures de l'aperçu sont en anglais ; les figures françaises sont dans `rapport/figures/`.*
+
 ## Structure
 
 ```
