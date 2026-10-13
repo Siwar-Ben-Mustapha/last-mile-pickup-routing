@@ -17,7 +17,7 @@
   const signed = (x, d = 1) => (x > 0 ? "+" : x < 0 ? "−" : "") + fmt(Math.abs(x), d) + "%";
   const change = (a, b) => (100 * (b - a)) / a;
   const clock = (min) => { const m = Math.round(min); const h = Math.floor(m / 60); return String(h).padStart(2, "0") + ":" + String(((m % 60) + 60) % 60).padStart(2, "0"); };
-  const C = { reel: "#8a8985", sans: "#eb6834", avec: "#2a78d6", gris: "#52606d", trait: "#e9eef4" };
+  const C = { reel: "#9b96b3", sans: "#ff8a3d", avec: "#a46bff", gris: "#aaa4c0", trait: "#30294a" };
   const NAMES = { reel: "Real (courier)", sans_ml: "Optimised without ML", avec_ml: "Optimised with ML" };
   const COLOR = { reel: C.reel, sans_ml: C.sans, avec_ml: C.avec };
   const ind = P.eda.indicateurs, op = P.optim, ml = P.ml;
@@ -30,9 +30,9 @@
   const charts = {};
 
   if (window.Chart) {
-    Chart.defaults.font.family = '"Public Sans", system-ui, sans-serif';
+    Chart.defaults.font.family = '"Inter", system-ui, sans-serif';
     Chart.defaults.font.size = 12;
-    Chart.defaults.color = "#52606d";
+    Chart.defaults.color = "#aaa4c0";
     Chart.defaults.borderColor = C.trait;
     Chart.defaults.plugins.legend.labels.boxWidth = 12;
     Chart.defaults.plugins.legend.labels.boxHeight = 12;
@@ -63,8 +63,8 @@
     const px = (i) => ox + (X[i] - minX) * s, py = (i) => h - (oy + (Y[i] - minY) * s);
     // scale bar
     const km = [0.1, 0.2, 0.5, 1, 2, 5, 10].find((k) => k * s > 60) || 10;
-    ctx.strokeStyle = "#7b8794"; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(14, h - 14); ctx.lineTo(14 + km * s, h - 14); ctx.stroke();
-    ctx.fillStyle = "#52606d"; ctx.font = "12px Public Sans, sans-serif"; ctx.fillText(fmt(km, km < 1 ? 1 : 0) + " km", 18 + km * s, h - 10);
+    ctx.strokeStyle = "#8c85a8"; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(14, h - 14); ctx.lineTo(14 + km * s, h - 14); ctx.stroke();
+    ctx.fillStyle = "#aaa4c0"; ctx.font = "12px Inter, sans-serif"; ctx.fillText(fmt(km, km < 1 ? 1 : 0) + " km", 18 + km * s, h - 10);
     routes.forEach((r) => {
       ctx.strokeStyle = r.couleur; ctx.lineWidth = r.epaisseur || 2.4; ctx.globalAlpha = r.alpha ?? 1;
       ctx.setLineDash(r.pointille ? [6, 5] : []); ctx.lineJoin = "round";
@@ -76,8 +76,8 @@
     for (let i = 0; i < sc.n; i++) {
       const late = opts.retards && opts.retards.has(i);
       ctx.beginPath(); ctx.arc(px(i), py(i), 10, 0, 2 * Math.PI);
-      ctx.fillStyle = "#fff"; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = late ? "#b5410f" : ref.couleur; ctx.stroke();
-      ctx.fillStyle = "#102a43"; ctx.font = "600 11px Public Sans, sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+      ctx.fillStyle = "#1b1726"; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = late ? "#ff6b4a" : ref.couleur; ctx.stroke();
+      ctx.fillStyle = "#ffffff"; ctx.font = "600 11px Inter, sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
       ctx.fillText(String(rank[i]), px(i), py(i) + 0.5);
     }
     ctx.textAlign = "start"; ctx.textBaseline = "alphabetic";
@@ -295,8 +295,8 @@
       options: { plugins: { legend: { display: false }, tooltip: { callbacks: { title: (c) => "Around " + c[0].label + " min", label: (c) => fmtInt(c.raw) + " trips" } } }, scales: { y: axis("Trips"), x: axis("Gap (min)", { grid: { display: false }, ticks: { maxTicksLimit: 11 } }) } } });
     const D = E.temps_vs_distance;
     chart("g-dist", { type: "line", data: { labels: D.bandes, datasets: [
-      { label: "3rd quartile", data: D.q75, borderColor: "rgba(42,120,214,.25)", backgroundColor: "rgba(42,120,214,.15)", fill: "+1", pointRadius: 0 },
-      { label: "1st quartile", data: D.q25, borderColor: "rgba(42,120,214,.25)", pointRadius: 0, fill: false },
+      { label: "3rd quartile", data: D.q75, borderColor: "rgba(164,107,255,.45)", backgroundColor: "rgba(164,107,255,.18)", fill: "+1", pointRadius: 0 },
+      { label: "1st quartile", data: D.q25, borderColor: "rgba(164,107,255,.45)", pointRadius: 0, fill: false },
       { label: "Median", data: D.mediane, borderColor: C.avec, borderWidth: 2.2, pointRadius: 3, pointBackgroundColor: C.avec }] },
       options: { interaction: { mode: "index", intersect: false }, plugins: { legend: { labels: { filter: (l) => l.text !== "1st quartile" } } }, scales: { y: axis("Time (min)"), x: { grid: { display: false } } } } });
     const H = E.par_heure;
@@ -316,12 +316,12 @@
     chart("g-taille", { type: "bar", data: { labels: S.bords.slice(0, -1).map((x) => fmt(x, 0)), datasets: [{ label: "Days", data: S.valeurs, backgroundColor: S.bords.slice(0, -1).map((x) => (x >= 10 && x <= 30 ? C.sans : C.avec)), barPercentage: 1, categoryPercentage: 0.95 }] },
       options: { plugins: { legend: { display: false }, tooltip: { callbacks: { title: (c) => c[0].label + " visits", label: (c) => fmtInt(c.raw) + " days" } } }, scales: { y: axis("Courier days"), x: axis("Visits in the day", { grid: { display: false }, ticks: { maxTicksLimit: 12 } }) } } });
     const pts = E.points_carte, regs = [...new Set(pts.map((p) => p[2]))].sort((a, b) => a - b);
-    const hue = (r) => `hsl(${(regs.indexOf(r) * 137.5) % 360} 55% 45%)`;
+    const hue = (r) => `hsl(${(regs.indexOf(r) * 137.5) % 360} 65% 62%)`;
     chart("g-points", { type: "scatter", data: { datasets: [{ label: "Visits", data: pts.map((p) => ({ x: p[0], y: p[1], r: p[2] })), pointRadius: 1.4, pointBackgroundColor: pts.map((p) => hue(p[2])), pointBorderWidth: 0 }] },
       options: { plugins: { legend: { display: false }, tooltip: { callbacks: { label: (c) => "Region " + c.raw.r + " (" + fmt(c.raw.x, 3) + "; " + fmt(c.raw.y, 3) + ")" } } }, scales: { x: axis("Longitude"), y: axis("Latitude") } } });
     const V = E.correlations.variables, MAT = E.correlations.matrice;
     $("#t-corr").innerHTML = "<thead><tr><th></th>" + V.map((v) => `<th>${v}</th>`).join("") + "</tr></thead><tbody>" +
-      V.map((v, i) => `<tr><th>${v}</th>` + MAT[i].map((x) => { const a = Math.abs(x); const c = x >= 0 ? `rgba(42,120,214,${a * 0.85})` : `rgba(235,104,52,${a * 0.85})`; return `<td style="background:${c};color:${a > 0.55 ? "#fff" : "#1f2933"}">${fmt(x, 2)}</td>`; }).join("") + "</tr>").join("") + "</tbody>";
+      V.map((v, i) => `<tr><th>${v}</th>` + MAT[i].map((x) => { const a = Math.abs(x); const c = x >= 0 ? `rgba(164,107,255,${a * 0.85})` : `rgba(255,138,61,${a * 0.85})`; return `<td style="background:${c};color:${a > 0.55 ? "#fff" : "#e9e5f5"}">${fmt(x, 2)}</td>`; }).join("") + "</tr>").join("") + "</tbody>";
   }
 
   // ======================= 5. ML =======================
@@ -456,7 +456,7 @@
           ${m.journal.map((j, k) => `<tr><td>${k + 1}</td><td>${clock(j.depart)}</td><td>visit ${j.de + 1}</td><td>visit ${j.vers + 1}</td><td class="num">${j.connues}</td><td class="num">${fmt(j.km, 2)} km</td><td class="num">${fmt(j.duree, 1)} min</td><td class="${j.retard ? "retard" : ""}">${clock(j.arrivee)}${j.retard ? " (late)" : ""}</td></tr>`).join("")}
           </tbody></table></div></div>`;
       const mini = (id, title, field, d) => chart(id, { type: "bar", data: { labels: ["Real", "No ML", "With ML"], datasets: [{ label: title, data: ["reel", "sans_ml", "avec_ml"].map((s) => res[s][field]), backgroundColor: [C.reel, C.sans, C.avec], borderRadius: 3 }] },
-        options: { plugins: { legend: { display: false }, title: { display: true, text: title, color: "#102a43", font: { weight: 600 } }, tooltip: { callbacks: { label: (c) => fmt(c.raw, d) } } }, scales: { y: axis("", { beginAtZero: true }), x: { grid: { display: false }, ticks: { font: { size: 10 } } } } } });
+        options: { plugins: { legend: { display: false }, title: { display: true, text: title, color: "#ffffff", font: { weight: 600 } }, tooltip: { callbacks: { label: (c) => fmt(c.raw, d) } } }, scales: { y: axis("", { beginAtZero: true }), x: { grid: { display: false }, ticks: { font: { size: 10 } } } } } });
       mini("gs-km", "Distance (km)", "distance_km", 2); mini("gs-min", "Travel time (min)", "deplacement_min", 0); mini("gs-ret", "Late pickups", "n_retard", 0);
       const paint = (s) => {
         const late = new Set(res[s].journal.filter((j) => j.retard).map((j) => j.vers));

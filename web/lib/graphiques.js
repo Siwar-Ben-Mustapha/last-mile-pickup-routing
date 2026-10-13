@@ -4,6 +4,7 @@
    new Chart(canvas, {type:"bar"|"line"|"scatter", data, options}),
    .update(), .destroy(). Works offline.
    ============================================================ */
+const LOCALE = (document.documentElement.lang || "fr").startsWith("en") ? "en-US" : "fr-FR";
 (function () {
   "use strict";
   const NS = "http://www.w3.org/2000/svg";
@@ -16,7 +17,7 @@
   const fmt = (v) => {
     const a = Math.abs(v);
     const d = a === 0 ? 0 : a < 1 ? 2 : a < 10 ? 1 : 0;
-    return Number(v).toLocaleString("fr-FR", { maximumFractionDigits: d });
+    return Number(v).toLocaleString(LOCALE, { maximumFractionDigits: d });
   };
   function pasJoli(etendue, n) {
     const brut = etendue / Math.max(n, 1), p = Math.pow(10, Math.floor(Math.log10(brut || 1))), r = brut / p;
@@ -97,7 +98,7 @@
       // --- marges ---
       const lblCat = labels.map(String);
       const maxCat = Math.max(0, ...lblCat.map((s) => s.length));
-      const tickTxt = gv.t.map((v) => v.toLocaleString("fr-FR", { minimumFractionDigits: gv.d, maximumFractionDigits: gv.d })), maxTick = Math.max(...tickTxt.map((s) => s.length));
+      const tickTxt = gv.t.map((v) => v.toLocaleString(LOCALE, { minimumFractionDigits: gv.d, maximumFractionDigits: gv.d })), maxTick = Math.max(...tickTxt.map((s) => s.length));
       const gauche = (horiz ? Math.min(maxCat * 6.3 + 10, W * 0.42) : maxTick * 7 + 12) + ((horiz ? catAxe : valAxe).title && (horiz ? catAxe : valAxe).title.display ? 16 : 0);
       const titreX = (horiz ? valAxe : catAxe).title, titreY = (horiz ? catAxe : valAxe).title;
       const rotation = !horiz && !estNum && maxCat * 6.2 > (W - gauche) / Math.max(labels.length, 1) * 0.95;
@@ -184,7 +185,7 @@
         capt.addEventListener("mouseleave", () => { cacher(); repere.setAttribute("visibility", "hidden"); });
       } else if (type === "scatter") {
         const xx = (v) => L + ((v - gx.lo) / (gx.hi - gx.lo)) * (R - L);
-        gx.t.forEach((v) => { el("line", { x1: xx(v), x2: xx(v), y1: T, y2: B, class: "mg-grille" }, g); el("text", { x: xx(v), y: B + 15, "text-anchor": "middle", class: "mg-tick" }, g).textContent = v.toLocaleString("fr-FR", { minimumFractionDigits: gx.d, maximumFractionDigits: gx.d }); });
+        gx.t.forEach((v) => { el("line", { x1: xx(v), x2: xx(v), y1: T, y2: B, class: "mg-grille" }, g); el("text", { x: xx(v), y: B + 15, "text-anchor": "middle", class: "mg-tick" }, g).textContent = v.toLocaleString(LOCALE, { minimumFractionDigits: gx.d, maximumFractionDigits: gx.d }); });
         ds.forEach((d, di) => {
           if (d.showLine) el("polyline", { points: d.data.map((p) => `${xx(p.x)},${yv(p.y)}`).join(" "), fill: "none", stroke: d.borderColor, "stroke-width": 2 }, g);
           d.data.forEach((p, i) => {
