@@ -23,6 +23,25 @@ The project is available in **English and French**: notebook, report and web pla
 
 ![Time between visits by distance](docs/img/time_vs_distance.png)
 
+### Web platform
+
+Interactive platform (English / French): overview, data explorer, preprocessing, EDA, ML models, a **route simulator that runs the optimisation in the browser**, and a before/after comparison.
+
+![Web platform: overview](docs/img/platform_overview.png)
+
+![Web platform: route simulator](docs/img/platform_simulator.png)
+
+<details>
+<summary>More screenshots</summary>
+
+![Web platform: before / after](docs/img/platform_before_after.png)
+
+![Web platform: ML models](docs/img/platform_ml_models.png)
+
+![Web platform: exploratory analysis](docs/img/platform_eda.png)
+
+</details>
+
 ## Structure
 
 ```

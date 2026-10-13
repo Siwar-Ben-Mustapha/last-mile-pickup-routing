@@ -25,6 +25,27 @@ Le projet est disponible en **français et en anglais** : notebook, rapport et p
 
 *Les figures de l'aperçu sont en anglais ; les figures françaises sont dans `rapport/figures/`.*
 
+### Plateforme web
+
+Plateforme interactive (français / anglais) : vue d'ensemble, explorateur de données, préparation, analyse exploratoire, modèles ML, **simulateur de tournées qui exécute l'optimisation dans le navigateur** et comparaison avant / après.
+
+![Plateforme web : vue d'ensemble](docs/img/platform_overview.png)
+
+![Plateforme web : simulateur de tournées](docs/img/platform_simulator.png)
+
+<details>
+<summary>Autres captures</summary>
+
+![Plateforme web : avant / après](docs/img/platform_before_after.png)
+
+![Plateforme web : modèles ML](docs/img/platform_ml_models.png)
+
+![Plateforme web : analyse exploratoire](docs/img/platform_eda.png)
+
+</details>
+
+*Les captures montrent la version anglaise de la plateforme.*
+
 ## Structure
 
 ```
