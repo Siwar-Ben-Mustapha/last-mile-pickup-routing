@@ -1,0 +1,48 @@
+# ---- Raw dataset (190 MB: above GitHub's 100 MB file limit, and not ours to redistribute) ----
+# Download it from https://huggingface.co/datasets/Cainiao-AI/LaDe (folder "pickup"), see README.md
+data/pickup_yt.csv
+data/*.csv
+!data/donnees_preparees_echantillon.csv
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+*.egg-info/
+
+# ---- Jupyter / Colab scratch ----
+.virtual_documents/
+
+# ---- Microsoft Office temporary and backup files ----
+~$*
+*.tmp
+~*.tmp
+*.backup.*
+*.asd
+*.wbk
+
+# ---- Editors / IDEs ----
+.vscode/
+.idea/
+*.swp
+*~
+
+# ---- Operating system ----
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---- Claude Code local files ----
+.claude/settings.local.json
+.claude/scheduled_tasks.lock
+
+# ---- Local secrets (none expected, kept as a safety net) ----
+.env
+.env.*
+*.pem
+*.key

@@ -1,0 +1,115 @@
+{
+ "modeles": [
+  {
+   "modele": "Baseline (moyennes historiques)",
+   "MAE": 7.9774,
+   "Biais": -5.0714,
+   "RMSE": 17.7775,
+   "R2": -0.1041,
+   "temps_entrainement_s": 0.0
+  },
+  {
+   "modele": "Régression linéaire",
+   "MAE": 9.3923,
+   "Biais": -0.1339,
+   "RMSE": 16.5543,
+   "R2": 0.0426,
+   "temps_entrainement_s": 2.3571
+  },
+  {
+   "modele": "Arbre de décision",
+   "MAE": 9.2366,
+   "Biais": -0.0701,
+   "RMSE": 16.2484,
+   "R2": 0.0777,
+   "temps_entrainement_s": 1.861
+  },
+  {
+   "modele": "Random Forest",
+   "MAE": 9.1055,
+   "Biais": -0.0561,
+   "RMSE": 16.0387,
+   "R2": 0.1013,
+   "temps_entrainement_s": 20.1539
+  },
+  {
+   "modele": "Gradient Boosting",
+   "MAE": 9.0128,
+   "Biais": -0.0439,
+   "RMSE": 15.9194,
+   "R2": 0.1146,
+   "temps_entrainement_s": 5.6146
+  }
+ ],
+ "modele_final": "Gradient Boosting",
+ "baseline": {
+  "service_median_min": 8.0,
+  "vitesse_mediane_kmh": 16.701465976964034
+ },
+ "importances": {
+  "région": 1.1075567473249037,
+  "latitude arrivée": 0.9675838588816678,
+  "longitude arrivée": 0.725985683231513,
+  "heure de départ": 0.6762671034735949,
+  "distance (km)": 0.5522502835932481,
+  "même AOI": 0.05591488632389137,
+  "type AOI arrivée": 0.04879787499544293,
+  "type AOI départ": 0.025943133317438694,
+  "colis à l'arrivée": 0.0005140414379045666
+ },
+ "erreurs_par_distance": {
+  "bandes": [
+   "<50 m",
+   "50–200 m",
+   "0,2–0,5 km",
+   "0,5–1 km",
+   "1–2 km",
+   "2–3 km",
+   "3–5 km",
+   "5–8 km",
+   "8–15 km",
+   ">15 km"
+  ],
+  "baseline": [
+   4.802,
+   5.485,
+   7.286,
+   9.752,
+   11.819,
+   14.005,
+   16.402,
+   21.526,
+   29.968,
+   119.71
+  ],
+  "ml": [
+   5.79,
+   6.391,
+   8.44,
+   11.136,
+   13.053,
+   14.595,
+   15.874,
+   14.535,
+   14.087,
+   19.011
+  ]
+ },
+ "evaluateur_mae": 9.480050333863026,
+ "tailles": {
+  "train": 327693,
+  "test": 153772,
+  "evaluateur": 478038
+ },
+ "features": [
+  "dist_km",
+  "meme_aoi",
+  "aoi_type_dep",
+  "aoi_type_arr",
+  "heure",
+  "n_colis_arr",
+  "region_id",
+  "lat_arr",
+  "lng_arr"
+ ]
+}

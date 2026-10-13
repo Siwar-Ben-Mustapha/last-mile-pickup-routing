@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LaDe Routes — ML and optimisation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="saut" href="#contenu">Skip to content</a>
+<div class="cadre">
+  <aside class="rail" aria-label="Navigation">
+    <div class="marque">
+      <svg viewBox="0 0 40 40" aria-hidden="true" class="logo"><path d="M6 30 L14 12 L24 22 L34 8" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6" cy="30" r="3.4" fill="currentColor"/><circle cx="14" cy="12" r="3.4" fill="currentColor"/><circle cx="24" cy="22" r="3.4" fill="currentColor"/><circle cx="34" cy="8" r="3.4" fill="#eb6834"/></svg>
+      <div>
+        <strong>LaDe Routes</strong>
+        <span>Yantai, last-mile pickup</span>
+      </div>
+    </div>
+    <div class="langue" role="group" aria-label="Language"><a href="index.html" id="vers-fr" lang="fr">FR</a><a href="index_en.html" aria-current="true" lang="en">EN</a></div>
+    <button class="menu-mobile" aria-expanded="false" aria-controls="nav">Sections</button>
+    <nav id="nav">
+      <a href="#home" data-page="home"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>Overview</a>
+      <a href="#data" data-page="data"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>Explore the data</a>
+      <a href="#preparation" data-page="preparation"><svg viewBox="0 0 24 24"><path d="M4 5h16l-6 8v6l-4-2v-4z"/></svg>Preparation</a>
+      <a href="#eda" data-page="eda"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Exploratory analysis</a>
+      <a href="#ml" data-page="ml"><svg viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l3 3M15 15l3 3M18 6l-3 3M9 15l-3 3"/></svg>ML models</a>
+      <a href="#simulator" data-page="simulator" class="phare"><svg viewBox="0 0 24 24"><circle cx="6" cy="18" r="2"/><circle cx="18" cy="6" r="2"/><path d="M8 18h5a3 3 0 0 0 0-6h-2a3 3 0 0 1 0-6h5"/></svg>Route simulator</a>
+      <a href="#comparison" data-page="comparison"><svg viewBox="0 0 24 24"><path d="M5 20V9M12 20V4M19 20v-8"/></svg>Before / after</a>
+      <a href="#conclusion" data-page="conclusion"><svg viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg>Conclusion</a>
+    </nav>
+    <p class="rail-pied">ML &amp; logistics optimisation project<br>Professor: Mr Slim Ayedi</p>
+  </aside>
+
+  <main id="contenu" tabindex="-1">
+    <!-- Each section is filled by app_en.js from data_en/donnees.js (Notebook exports) -->
+    <section id="page-home" class="page" aria-labelledby="t-home"></section>
+    <section id="page-data" class="page" aria-labelledby="t-data"></section>
+    <section id="page-preparation" class="page" aria-labelledby="t-preparation"></section>
+    <section id="page-eda" class="page" aria-labelledby="t-eda"></section>
+    <section id="page-ml" class="page" aria-labelledby="t-ml"></section>
+    <section id="page-simulator" class="page" aria-labelledby="t-simulator"></section>
+    <section id="page-comparison" class="page" aria-labelledby="t-comparison"></section>
+    <section id="page-conclusion" class="page" aria-labelledby="t-conclusion"></section>
+  </main>
+</div>
+
+<div id="erreur-donnees" class="erreur" hidden>
+  The project data could not be found. Check that <code>web/data_en/donnees.js</code> exists
+  (it is created by the last export cell of the Notebook).
+</div>
+
+<script src="lib/graphiques.js"></script>
+<script src="data_en/donnees.js"></script>
+<script src="simulateur.js"></script>
+<script src="app_en.js"></script>
+<script>
+document.getElementById("vers-fr").addEventListener("click", function () {
+  var m = { home: "accueil", data: "donnees", simulator: "simulateur", comparison: "comparaison" };
+  var h = location.hash.slice(1); this.href = "index.html" + (h ? "#" + (m[h] || h) : "");
+});
+</script>
+</body>
+</html>

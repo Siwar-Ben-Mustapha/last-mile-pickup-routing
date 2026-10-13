@@ -1,0 +1,6 @@
+modele,MAE,Biais,RMSE,R2,temps_entrainement_s
+Baseline (moyennes historiques),7.9774,-5.0714,17.7775,-0.1041,0.0
+Régression linéaire,9.3923,-0.1339,16.5543,0.0426,2.3571
+Arbre de décision,9.2366,-0.0701,16.2484,0.0777,1.861
+Random Forest,9.1055,-0.0561,16.0387,0.1013,20.1539
+Gradient Boosting,9.0128,-0.0439,15.9194,0.1146,5.6146
